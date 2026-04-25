@@ -2,7 +2,7 @@
 
 A minimalist grid skipping puzzle game.
 
-🌐 **Landing page:** https://tembelhayvan.github.io/vaultris-web/
+🌐 **Landing page:** https://garajprojeleri.github.io/Vaultris/
 
 ## What is Vaultris?
 

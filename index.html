@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vaultris — Grid Skipping Puzzle</title>
-<meta name="description" content="A minimalist grid puzzle game. 100 levels, 4 modes, fully offline. Available on iOS, Android coming soon.">
+<meta name="description" content="A minimalist grid puzzle game. 100 levels, 4 modes, fully offline. Available on iOS and Android.">
 
 <meta property="og:title" content="Vaultris — Grid Skipping Puzzle">
 <meta property="og:description" content="A quiet puzzle game. 100 levels, 4 modes, no ads.">
@@ -53,16 +53,6 @@
   .store-btn:hover { transform: translateY(-2px); opacity: 0.9; }
   .ios { background: #000; color: #fff; border: 1px solid #444; }
   .android { background: #4A90D9; color: #fff; }
-  .android.disabled {
-    background: #2A3F5F;
-    color: #8095B5;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-  .android.disabled:hover {
-    transform: none;
-    opacity: 1;
-  }
   .footer {
     margin-top: 60px; color: #6B5F8E;
     font-size: 12px; line-height: 1.8;
@@ -91,8 +81,8 @@
       <a href="https://apps.apple.com/app/vaultris/id6763012293" class="store-btn ios" id="ios-link">
         Download on the App Store
       </a>
-      <a href="#" class="store-btn android disabled" id="android-link">
-        Coming soon to Google Play
+      <a href="https://play.google.com/store/apps/details?id=com.garajprojeleri.vaultris" class="store-btn android" id="android-link">
+        Get it on Google Play
       </a>
     </div>
     <p class="loading" id="loading">Redirecting to store...</p>
@@ -104,25 +94,28 @@
 
 <script>
   (function() {
-    var ua = navigator.userAgent || navigator.vendor || window.opera;
-    var iosLink = document.getElementById('ios-link').href;
-    var loading = document.getElementById('loading');
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  var iosLink = document.getElementById('ios-link').href;
+  var androidLink = document.getElementById('android-link').href;
+  var loading = document.getElementById('loading');
 
-    function redirect(url) {
-      loading.classList.add('visible');
-      setTimeout(function() {
-        window.location.href = url;
-      }, 800);
-    }
+  function redirect(url) {
+    loading.classList.add('visible');
+    setTimeout(function() {
+      window.location.href = url;
+    }, 800);
+  }
 
-    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-      redirect(iosLink);
-      return;
-    }
+  if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+    redirect(iosLink);
+    return;
+  }
 
-    // Android redirect disabled until Google Play production release
-    // Android users will see the landing page with "Coming soon" button
-  })();
+  if (/android/i.test(ua)) {
+    redirect(androidLink);
+    return;
+  }
+})();
 </script>
 </body>
 </html>
